@@ -4,7 +4,7 @@ void    ft_putstr(char *str);
 
 void    ft_print_input(int *input);
 
-int	**ft_print_matrix(/*int *dimension*/);
+void ft_print_matrix(int **matrix);
 
 int ft_is_whitespace(char c);
 

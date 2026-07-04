@@ -1,8 +1,14 @@
+#include <stdlib.h>
 #include <unistd.h>
 
 void	ft_putchar(char c)
 {
 	write(1, &c, 1);
+}
+
+int	ft_is_whitespace(char c)
+{
+	return ((c >= 9 && c <= 13) || c == ' ');
 }
 
 void	ft_putstr(char *str)
@@ -30,9 +36,8 @@ void	ft_print_input(int *matrix)
 	}
 }
 
-int	**ft_print_matrix(/*int *input*/)
+void	ft_print_matrix(int **matrix)
 {
-	int	**matrix;
 	int	i;
 	int	j;
 
@@ -49,11 +54,6 @@ int	**ft_print_matrix(/*int *input*/)
 		ft_putchar('\n');
 		i++;
 	}
-}
-
-int	ft_is_whitespace(char c)
-{
-	return ((c >= 9 && c <= 13) || c == ' ');
 }
 
 int	**ft_alloc_matrix(/*int *input*/)
@@ -87,4 +87,5 @@ int	**ft_alloc_matrix(/*int *input*/)
 		}
 		i++;
 	}
+	return (matrix);
 }
