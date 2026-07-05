@@ -64,10 +64,8 @@ int	solve(int *input, int **matrix, int x, int y)
 	if (x == 4)
 	{
 		if (ft_verify_col(y, input, matrix))
-		{
 			if (solve(input, matrix, 0, y + 1))
 				return (TRUE);
-		}
 		else
 			return (FALSE);
 		save_lines(&x, &y);
