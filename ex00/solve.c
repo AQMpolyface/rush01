@@ -20,8 +20,6 @@ int	ft_verify_col(int col, int *input, int **matrix)
 	j = 0;
 	while (j < 4)
 	{
-		printf("%d %d %d %d %d %d\n", matrix[col][j], j, col, left, input[col
-			+ 8], col + 8);
 		if (matrix[col][j] > biggest)
 		{
 			biggest = matrix[col][j];
@@ -33,7 +31,6 @@ int	ft_verify_col(int col, int *input, int **matrix)
 	biggest = 0;
 	while (j >= 0)
 	{
-		printf("%d %d %d\n", matrix[col][j], j, col);
 		if (matrix[col][j] > biggest)
 		{
 			biggest = matrix[col][j];
@@ -41,9 +38,6 @@ int	ft_verify_col(int col, int *input, int **matrix)
 		}
 		j--;
 	}
-	printf("RIGHT %d %d LEFT %d %d, math %d %d %d %d\n", right_increment, right,
-		left_increment, left, matrix[0][0], matrix[0][1], matrix[0][2],
-		matrix[0][3]);
 	return (right_increment == right) && (left_increment == left);
 }
 
@@ -145,7 +139,6 @@ int	ft_is_num_in_row(int y, int val, int **matrix)
 	i = 0;
 	while (i < 4)
 	{
-		// printf("WEE WOO %d %d\n", y, val);
 		if (matrix[y][i] == val)
 			return (TRUE);
 		i++;
@@ -207,17 +200,12 @@ int	solve(int *input, int **matrix, int x, int y)
 
 	if (ft_is_valid_board(input, matrix))
 		return (TRUE);
-	// ft_find_empty_square(&x, &y, matrix);
-	printf("X = %d y %d\n", x, y);
-	ft_print_matrix(matrix);
 	if (x == 4 && y == 3)
 	{
 		return (TRUE);
 	}
 	if (x == 4)
 	{
-		printf("verifying %d row, res %d\n", x, ft_verify_col(y, input,
-				matrix));
 		if (ft_verify_col(y, input, matrix))
 		{
 			if (solve(input, matrix, 0, y + 1))
@@ -231,7 +219,6 @@ int	solve(int *input, int **matrix, int x, int y)
 	i = 1;
 	while (i <= 4)
 	{
-		// printf("is valid move %d %d %d\n", x, y, i);
 		if (ft_is_valid_move(x, y, i, matrix, input))
 		{
 			matrix[y][x] = i;
