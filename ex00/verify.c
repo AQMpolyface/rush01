@@ -6,7 +6,7 @@
 /*   By: mjonas <mjonas@students.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 17:47:23 by mjonas            #+#    #+#             */
-/*   Updated: 2026/07/05 18:23:32 by mjonas           ###   ####lausanne.ch   */
+/*   Updated: 2026/07/05 19:03:01 by mjonas           ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int	ft_verify_col(int col, int *input, int **matrix)
 
 	l_increment = count_left_to_right(col, matrix);
 	r_increment = count_right_to_left(col, matrix);
-	return ((l_increment == input[col + 8])
-		&& (r_increment == input[col + 12]));
+	return ((l_increment == input[col + 8]) && (r_increment == input[col
+				+ 12]));
 }
 
 int	ft_verify_column(int col, int *input, int **matrix)
