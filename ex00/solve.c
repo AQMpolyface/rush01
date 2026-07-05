@@ -6,7 +6,7 @@
 /*   By: mjonas <mjonas@students.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 17:44:30 by mjonas            #+#    #+#             */
-/*   Updated: 2026/07/05 17:44:31 by mjonas           ###   ####lausanne.ch   */
+/*   Updated: 2026/07/05 19:01:27 by mjonas           ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,8 @@ int	solve(int *input, int **matrix, int x, int y)
 		return (TRUE);
 	if (x == 4)
 	{
-		if (ft_verify_col(y, input, matrix))
-		{
-			if (solve(input, matrix, 0, y + 1))
-				return (TRUE);
-		}
+		if (ft_verify_col(y, input, matrix) && solve(input, matrix, 0, y + 1))
+			return (TRUE);
 		else
 			return (FALSE);
 		save_lines(&x, &y);
