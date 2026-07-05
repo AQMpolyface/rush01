@@ -35,7 +35,6 @@ int	main(int argc, char **argv)
 		return (1);
 	solve(input, matrix, 0, 0);
 	ft_print_matrix(matrix);
-	ft_putchar('\n');
 	i = -1;
 	while (++i < 4)
 		free(matrix[i]);

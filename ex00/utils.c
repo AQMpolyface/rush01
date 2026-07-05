@@ -53,7 +53,6 @@ void	ft_print_matrix(int **matrix)
 		ft_putchar('\n');
 		i++;
 	}
-	ft_putchar('\n');
 }
 
 int	**ft_alloc_matrix(void)
