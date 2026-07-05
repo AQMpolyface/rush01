@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mjonas <mjonas@students.42lausanne.ch>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/05 17:45:10 by mjonas            #+#    #+#             */
+/*   Updated: 2026/07/05 17:45:16 by mjonas           ###   ####lausanne.ch   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include <unistd.h>
 
@@ -23,19 +35,6 @@ void	ft_putstr(char *str)
 	}
 }
 
-void	ft_print_input(int *matrix)
-{
-	int	i;
-
-	i = 0;
-	while (i < 16)
-	{
-		ft_putchar(matrix[i] + '0');
-		ft_putchar(' ');
-		i++;
-	}
-}
-
 void	ft_print_matrix(int **matrix)
 {
 	int	i;
@@ -57,7 +56,7 @@ void	ft_print_matrix(int **matrix)
 	ft_putchar('\n');
 }
 
-int	**ft_alloc_matrix(/*int *input*/)
+int	**ft_alloc_matrix()
 {
 	int	**matrix;
 	int	i;

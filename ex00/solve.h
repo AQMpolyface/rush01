@@ -1,9 +1,13 @@
-int	ft_is_valid_board(int *input, int **matrix);
-
-int ft_verify_row(int row, int* input, int** matrix);
-
-int ft_verify_column(int col, int* input, int** matrix);
-
-int	max_pose(int *input, int **matrix);
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   solve.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mjonas <mjonas@students.42lausanne.ch>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/05 17:44:46 by mjonas            #+#    #+#             */
+/*   Updated: 2026/07/05 17:44:54 by mjonas           ###   ####lausanne.ch   */
+/*                                                                            */
+/* ************************************************************************** */
 
 int	solve(int *input, int **matrix, int x, int y);

@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mjonas <mjonas@students.42lausanne.ch>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/05 17:44:15 by mjonas            #+#    #+#             */
+/*   Updated: 2026/07/05 17:44:17 by mjonas           ###   ####lausanne.ch   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "parse.h"
-#include "put.h"
 #include "solve.h"
 #include "utils.h"
 #include <stdlib.h>
@@ -7,8 +18,8 @@
 int	main(int argc, char **argv)
 
 {
-	int* input;
-	int** matrix;
+	int *input;
+	int **matrix;
 	int i;
 	if (argc <= 1)
 	{
