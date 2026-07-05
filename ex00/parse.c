@@ -27,23 +27,16 @@ int	*ft_parse_input(char *str)
 		return (NULL);
 	}
 	i = -1;
-	matrix_i = 0;
+	matrix_i = -1;
 	while (str[++i])
 	{
 		if (ft_is_whitespace(str[i]))
 			continue ;
 		else if (str[i] >= '0' && str[i] <= '9')
-		{
-			matrix[matrix_i] = str[i] - '0';
-			matrix_i++;
-		}
+			matrix[++matrix_i] = str[i] - '0';
 		else
 		{
-			ft_putstr("invalid char: ");
-			ft_putchar(str[i]);
-			ft_putstr(" at line ");
-			ft_putchar(i + '0');
-			ft_putchar('\n');
+			ft_putstr("invalid char in input detected\n");
 			return (NULL);
 		}
 	}

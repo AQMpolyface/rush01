@@ -68,24 +68,18 @@ int	**ft_alloc_matrix(void)
 		ft_putstr("error while allocating matrix");
 		return (NULL);
 	}
-	i = 0;
-	while (i < 4)
+	i = -1;
+	while (++i < 4)
 	{
-		j = 0;
+		j = -1;
 		matrix[i] = malloc(sizeof(int) * 4);
 		if (!matrix)
 		{
-			ft_putstr("error while allocating matrix row ");
-			ft_putchar(i + '0');
-			ft_putchar('\n');
+			ft_putstr("error while allocating matrix row \n");
 			return (NULL);
 		}
-		while (j < 4)
-		{
+		while (++j < 4)
 			matrix[i][j] = 0;
-			j++;
-		}
-		i++;
 	}
 	return (matrix);
 }

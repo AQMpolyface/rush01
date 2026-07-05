@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "utils.h"
+#include "verify.h"
 #include <stdlib.h>
 
 int	ft_is_num_in_row(int y, int val, int **matrix)
@@ -48,7 +49,8 @@ int	ft_is_valid_move(int x, int y, int val, int **matrix)
 	return (TRUE);
 }
 
-void save_lines(int* x, int*y) {
+void	save_lines(int *x, int *y)
+{
 	(*y)++;
 	(*x) = 0;
 }
@@ -70,17 +72,16 @@ int	solve(int *input, int **matrix, int x, int y)
 			return (FALSE);
 		save_lines(&x, &y);
 	}
-	i = 1;
-	while (i <= 4)
+	i = 0;
+	while (++i <= 4)
 	{
-		if (ft_is_valid_move(x, y, i, matrix ))
+		if (ft_is_valid_move(x, y, i, matrix))
 		{
 			matrix[y][x] = i;
 			if (solve(input, matrix, x + 1, y))
 				return (TRUE);
 			matrix[y][x] = 0;
 		}
-		i++;
 	}
 	return (FALSE);
 }
