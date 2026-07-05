@@ -3,7 +3,7 @@
 #define TRUE 1
 #define FALSE 0
 
-int	ft_verify_row(int row, int *input, int **matrix)
+int	ft_verify_col(int col, int *input, int **matrix)
 {
 	int	right;
 	int	left;
@@ -15,14 +15,15 @@ int	ft_verify_row(int row, int *input, int **matrix)
 	biggest = 0;
 	right_increment = 0;
 	left_increment = 0;
-	left = input[row + 4];
-	right = input[row + 8];
+	right = input[col + 8];
+	left = input[col + 12];
 	j = 0;
 	while (j < 4)
 	{
-		if (matrix[j][row] > biggest)
+		printf("%d %d %d %d %d %d\n", matrix[col][j], j, col, left , input[col + 8] , col + 8);
+		if (matrix[col][j] > biggest)
 		{
-			biggest = matrix[j][row];
+			biggest = matrix[col][j];
 			right_increment++;
 		}
 		j++;
@@ -31,13 +32,16 @@ int	ft_verify_row(int row, int *input, int **matrix)
 	biggest = 0;
 	while (j >= 0)
 	{
-		if (matrix[j][row] > biggest)
+		printf("%d %d %d\n", matrix[col][j], j, col);
+		if (matrix[col][j] > biggest)
 		{
-			biggest = matrix[j][row];
+			biggest = matrix[col][j];
 			left_increment++;
 		}
 		j--;
 	}
+	printf("RIGHT %d %d LEFT %d %d, math %d %d %d %d\n", right_increment, right, left_increment,
+		left, matrix[0][0], matrix[0][1], matrix[0][2],matrix[0][3]);
 	return (right_increment == right) && (left_increment == left);
 }
 
@@ -125,7 +129,7 @@ int	ft_is_valid_board(int *input, int **matrix)
 	i = 0;
 	while (i < 4)
 	{
-		if (!ft_verify_row(i, input, matrix))
+		if (!ft_verify_col(i, input, matrix))
 			return (FALSE);
 		i++;
 	}
@@ -202,14 +206,24 @@ int	solve(int *input, int **matrix, int x, int y)
 	if (ft_is_valid_board(input, matrix))
 		return (TRUE);
 	// ft_find_empty_square(&x, &y, matrix);
+	printf("X = %d y %d\n", x, y);
 	ft_print_matrix(matrix);
-	if (y == 4)
+	if (x == 4 && y == 3) {
+		return TRUE;
+	}
+	if (x == 4)
 	{
-		if (!ft_verify_column(x, input, matrix))
+		printf("verifying %d row, res %d\n",x, ft_verify_col(y, input,
+				matrix));
+		if (ft_verify_col(y, input, matrix))
 		{
+			if (solve(input, matrix, 0, y + 1))
+				return (TRUE);
 		}
-		x++;
-		y = 0;
+		else
+			return (FALSE);
+		y++;
+		x = 0;
 	}
 	i = 1;
 	while (i <= 4)
@@ -218,7 +232,7 @@ int	solve(int *input, int **matrix, int x, int y)
 		if (ft_is_valid_move(x, y, i, matrix, input))
 		{
 			matrix[y][x] = i;
-			if (solve(input, matrix, x, y + 1))
+			if (solve(input, matrix, x + 1, y))
 				return (TRUE);
 			matrix[y][x] = 0;
 		}
