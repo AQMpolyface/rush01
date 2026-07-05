@@ -16,7 +16,6 @@ int	main(int argc, char **argv)
 	if (!input)
 		return (1);
 
-
 	// int *input = ft_parse_input("2 1 2 3 2 3 2 1 2 1 2 2 3 4 2 1");
 	// int *input = ft_parse_input("3 1 2 2 2 3 2 1 2 2 1 4 2 2 4 1");
 	//  basecase	i
@@ -44,13 +43,13 @@ int	main(int argc, char **argv)
 	// ft_put_x_top(input, matrix);
 	ft_print_matrix(matrix);
 	ft_putchar('\n');
-		int i = 0;
-		while (i < 4)
-		{
-			free(matrix[i]);
-			i++;
-		}
-		free(matrix);
-		free(input);
-		return (0);
+	int i = 0;
+	while (i < 4)
+	{
+		free(matrix[i]);
+		i++;
+	}
+	free(matrix);
+	free(input);
+	return (0);
 }
