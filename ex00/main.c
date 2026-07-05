@@ -12,15 +12,15 @@
 
 #include "parse.h"
 #include "solve.h"
+#include "verify.h"
+#include "free.h"
 #include "utils.h"
-#include <stdlib.h>
 
 int	main(int argc, char **argv)
 
 {
 	int	*input;
 	int	**matrix;
-	int	i;
 
 	if (argc <= 1)
 	{
@@ -34,11 +34,10 @@ int	main(int argc, char **argv)
 	if (!matrix || !input)
 		return (1);
 	solve(input, matrix, 0, 0);
-	ft_print_matrix(matrix);
-	i = -1;
-	while (++i < 4)
-		free(matrix[i]);
-	free(matrix);
-	free(input);
+	if (!ft_is_valid_board(input, matrix))
+		ft_putstr("no board was found for your input\n");
+	else
+		ft_print_matrix(matrix);
+	free_all(input, matrix);
 	return (0);
 }

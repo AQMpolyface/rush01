@@ -1,19 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   count.h                                            :+:      :+:    :+:   */
+/*   free.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjonas <mjonas@students.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/05 18:47:22 by mjonas            #+#    #+#             */
-/*   Updated: 2026/07/05 18:47:24 by mjonas           ###   ####lausanne.ch   */
+/*   Created: 2026/07/05 20:07:17 by mjonas            #+#    #+#             */
+/*   Updated: 2026/07/05 20:12:42 by mjonas           ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_count_left_to_right(int col, int **matrix);
-
-int	ft_count_right_to_left(int col, int **matrix);
-
-int	ft_count_top_to_bottom(int col, int **matrix);
-
-int	ft_count_bottom_to_top(int col, int **matrix);
+void	free_all(int *input, int **matrix);

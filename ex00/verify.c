@@ -18,8 +18,8 @@ int	ft_verify_col(int col, int *input, int **matrix)
 	int	l_increment;
 	int	r_increment;
 
-	l_increment = count_left_to_right(col, matrix);
-	r_increment = count_right_to_left(col, matrix);
+	l_increment = ft_count_left_to_right(col, matrix);
+	r_increment = ft_count_right_to_left(col, matrix);
 	return ((l_increment == input[col + 8]) && (r_increment == input[col
 				+ 12]));
 }
@@ -29,8 +29,8 @@ int	ft_verify_column(int col, int *input, int **matrix)
 	int	t_increment;
 	int	b_increment;
 
-	t_increment = count_top_to_bottom(col, matrix);
-	b_increment = count_bottom_to_top(col, matrix);
+	t_increment = ft_count_top_to_bottom(col, matrix);
+	b_increment = ft_count_bottom_to_top(col, matrix);
 	return ((t_increment == input[col]) && (b_increment == input[col + 4]));
 }
 

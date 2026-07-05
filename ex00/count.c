@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	count_left_to_right(int col, int **matrix)
+int	ft_count_left_to_right(int col, int **matrix)
 {
 	int	j;
 	int	max;
@@ -31,7 +31,7 @@ int	count_left_to_right(int col, int **matrix)
 	return (cnt);
 }
 
-int	count_right_to_left(int col, int **matrix)
+int	ft_count_right_to_left(int col, int **matrix)
 {
 	int	j;
 	int	max;
@@ -52,7 +52,7 @@ int	count_right_to_left(int col, int **matrix)
 	return (cnt);
 }
 
-int	count_top_to_bottom(int col, int **matrix)
+int	ft_count_top_to_bottom(int col, int **matrix)
 {
 	int	j;
 	int	max;
@@ -73,7 +73,7 @@ int	count_top_to_bottom(int col, int **matrix)
 	return (cnt);
 }
 
-int	count_bottom_to_top(int col, int **matrix)
+int	ft_count_bottom_to_top(int col, int **matrix)
 {
 	int	j;
 	int	max;

@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   count.h                                            :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjonas <mjonas@students.42lausanne.ch>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/05 18:47:22 by mjonas            #+#    #+#             */
-/*   Updated: 2026/07/05 18:47:24 by mjonas           ###   ####lausanne.ch   */
+/*   Created: 2026/07/05 20:06:17 by mjonas            #+#    #+#             */
+/*   Updated: 2026/07/05 20:13:16 by mjonas           ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_count_left_to_right(int col, int **matrix);
+#include <stdlib.h>
 
-int	ft_count_right_to_left(int col, int **matrix);
+void	free_all(int *input, int **matrix)
+{
+	int	i;
 
-int	ft_count_top_to_bottom(int col, int **matrix);
-
-int	ft_count_bottom_to_top(int col, int **matrix);
+	i = -1;
+	while (++i < 4)
+		free(matrix[i]);
+	free(matrix);
+	free(input);
+}

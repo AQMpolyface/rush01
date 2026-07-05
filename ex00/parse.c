@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "utils.h"
-#include <stdio.h>
 #include <stdlib.h>
 
 void	*ft_ret(char *str)

@@ -12,7 +12,6 @@
 
 #include "utils.h"
 #include "verify.h"
-#include <stdlib.h>
 
 int	ft_is_num_in_row(int y, int val, int **matrix)
 {
