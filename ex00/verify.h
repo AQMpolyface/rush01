@@ -13,3 +13,5 @@
 int	ft_verify_column(int col, int *input, int **matrix);
 
 int	ft_verify_col(int col, int *input, int **matrix);
+
+int	ft_is_valid_board(int *input, int **matrix);

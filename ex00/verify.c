@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "utils.h"
+
 int	ft_verify_col(int col, int *input, int **matrix)
 {
 	int	right;
@@ -93,4 +95,28 @@ int	ft_verify_column(int col, int *input, int **matrix)
 	}
 	return ((top_increment == top) && (bottom_increment == bottom)
 		&& !contains_null);
+}
+
+int	ft_is_valid_board(int *input, int **matrix)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < 4)
+	{
+		if (!ft_verify_column(i, input, matrix))
+		{
+			return (FALSE);
+		}
+		i++;
+	}
+	i = 0;
+	while (i < 4)
+	{
+		if (!ft_verify_col(i, input, matrix))
+			return (FALSE);
+		i++;
+	}
+	return (TRUE);
 }

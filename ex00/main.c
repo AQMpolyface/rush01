@@ -30,10 +30,8 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	input = ft_parse_input(argv[1]);
-	if (!input)
-		return (1);
 	matrix = ft_alloc_matrix();
-	if (!matrix)
+	if (!matrix || !input)
 		return (1);
 	solve(input, matrix, 0, 0);
 	ft_print_matrix(matrix);

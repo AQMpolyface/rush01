@@ -13,50 +13,6 @@
 #include "utils.h"
 #include <stdlib.h>
 
-int	ft_is_board_filled(int **matrix)
-{
-	int	j;
-	int	i;
-
-	j = 0;
-	i = 0;
-	while (i < 4)
-	{
-		while (j < 4)
-		{
-			if (matrix[i][j] == 0)
-				return (FALSE);
-			j++;
-		}
-		i++;
-	}
-	return (TRUE);
-}
-
-int	ft_is_valid_board(int *input, int **matrix)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < 4)
-	{
-		if (!ft_verify_column(i, input, matrix))
-		{
-			return (FALSE);
-		}
-		i++;
-	}
-	i = 0;
-	while (i < 4)
-	{
-		if (!ft_verify_col(i, input, matrix))
-			return (FALSE);
-		i++;
-	}
-	return (TRUE);
-}
-
 int	ft_is_num_in_row(int y, int val, int **matrix)
 {
 	int	i;
@@ -85,50 +41,24 @@ int	ft_is_num_in_col(int x, int val, int **matrix)
 	return (FALSE);
 }
 
-void	ft_find_empty_square(int *x, int *y, int **matrix)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < 4)
-	{
-		j = 0;
-		while (j < 4)
-		{
-			if (matrix[i][j] == 0)
-			{
-				*x = j;
-				*y = i;
-				return ;
-			}
-			j++;
-		}
-		i++;
-	}
-	return ;
-}
-
-int	ft_is_valid_move(int x, int y, int val, int **matrix, int *input)
+int	ft_is_valid_move(int x, int y, int val, int **matrix)
 {
 	if (ft_is_num_in_col(x, val, matrix) || ft_is_num_in_row(y, val, matrix))
-	{
 		return (FALSE);
-	}
 	return (TRUE);
+}
+
+void save_lines(int* x, int*y) {
+	(*y)++;
+	(*x) = 0;
 }
 
 int	solve(int *input, int **matrix, int x, int y)
 {
 	int	i;
-	int	j;
 
-	if (ft_is_valid_board(input, matrix))
+	if (ft_is_valid_board(input, matrix) || x == 4 && y == 3)
 		return (TRUE);
-	if (x == 4 && y == 3)
-	{
-		return (TRUE);
-	}
 	if (x == 4)
 	{
 		if (ft_verify_col(y, input, matrix))
@@ -138,13 +68,12 @@ int	solve(int *input, int **matrix, int x, int y)
 		}
 		else
 			return (FALSE);
-		y++;
-		x = 0;
+		save_lines(&x, &y);
 	}
 	i = 1;
 	while (i <= 4)
 	{
-		if (ft_is_valid_move(x, y, i, matrix, input))
+		if (ft_is_valid_move(x, y, i, matrix ))
 		{
 			matrix[y][x] = i;
 			if (solve(input, matrix, x + 1, y))
