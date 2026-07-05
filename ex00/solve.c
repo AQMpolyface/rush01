@@ -20,7 +20,8 @@ int	ft_verify_col(int col, int *input, int **matrix)
 	j = 0;
 	while (j < 4)
 	{
-		printf("%d %d %d %d %d %d\n", matrix[col][j], j, col, left , input[col + 8] , col + 8);
+		printf("%d %d %d %d %d %d\n", matrix[col][j], j, col, left, input[col
+			+ 8], col + 8);
 		if (matrix[col][j] > biggest)
 		{
 			biggest = matrix[col][j];
@@ -40,8 +41,9 @@ int	ft_verify_col(int col, int *input, int **matrix)
 		}
 		j--;
 	}
-	printf("RIGHT %d %d LEFT %d %d, math %d %d %d %d\n", right_increment, right, left_increment,
-		left, matrix[0][0], matrix[0][1], matrix[0][2],matrix[0][3]);
+	printf("RIGHT %d %d LEFT %d %d, math %d %d %d %d\n", right_increment, right,
+		left_increment, left, matrix[0][0], matrix[0][1], matrix[0][2],
+		matrix[0][3]);
 	return (right_increment == right) && (left_increment == left);
 }
 
@@ -208,12 +210,13 @@ int	solve(int *input, int **matrix, int x, int y)
 	// ft_find_empty_square(&x, &y, matrix);
 	printf("X = %d y %d\n", x, y);
 	ft_print_matrix(matrix);
-	if (x == 4 && y == 3) {
-		return TRUE;
+	if (x == 4 && y == 3)
+	{
+		return (TRUE);
 	}
 	if (x == 4)
 	{
-		printf("verifying %d row, res %d\n",x, ft_verify_col(y, input,
+		printf("verifying %d row, res %d\n", x, ft_verify_col(y, input,
 				matrix));
 		if (ft_verify_col(y, input, matrix))
 		{
