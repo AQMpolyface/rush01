@@ -194,16 +194,23 @@ int	ft_is_valid_move(int x, int y, int val, int **matrix, int *input)
 	return (TRUE);
 }
 
-int	solve(int *input, int **matrix)
+int	solve(int *input, int **matrix, int x, int y)
 {
 	int	i;
 	int	j;
-	int	x;
-	int	y;
 
 	if (ft_is_valid_board(input, matrix))
 		return (TRUE);
-	ft_find_empty_square(&x, &y, matrix);
+	// ft_find_empty_square(&x, &y, matrix);
+	ft_print_matrix(matrix);
+	if (y == 4)
+	{
+		if (!ft_verify_column(x, input, matrix))
+		{
+		}
+		x++;
+		y = 0;
+	}
 	i = 1;
 	while (i <= 4)
 	{
@@ -211,7 +218,7 @@ int	solve(int *input, int **matrix)
 		if (ft_is_valid_move(x, y, i, matrix, input))
 		{
 			matrix[y][x] = i;
-			if (solve(input, matrix))
+			if (solve(input, matrix, x, y + 1))
 				return (TRUE);
 			matrix[y][x] = 0;
 		}
