@@ -59,7 +59,7 @@ int	solve(int *input, int **matrix, int x, int y)
 {
 	int	i;
 
-	if (ft_is_valid_board(input, matrix) || x == 4 && y == 3)
+	if (ft_is_valid_board(input, matrix) || (x == 4 && y == 3))
 		return (TRUE);
 	if (x == 4)
 	{
