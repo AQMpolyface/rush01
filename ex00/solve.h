@@ -6,4 +6,4 @@ int ft_verify_column(int col, int* input, int** matrix);
 
 int	max_pose(int *input, int **matrix);
 
-int	solve(int *input, int **matrix, int x, int num);
+int	solve(int *input, int **matrix);

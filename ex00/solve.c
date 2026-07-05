@@ -1,5 +1,8 @@
 #include <stdlib.h>
 
+#define TRUE 1
+#define FALSE 0
+
 int	ft_verify_row(int row, int *input, int **matrix)
 {
 	int	right;
@@ -47,7 +50,9 @@ int	ft_verify_column(int col, int *input, int **matrix)
 	int	top_increment;
 	int	bottom_increment;
 	int	j;
+	int	contains_null;
 
+	contains_null = 0;
 	i = 0;
 	biggest = 0;
 	top_increment = 0;
@@ -62,6 +67,10 @@ int	ft_verify_column(int col, int *input, int **matrix)
 			biggest = matrix[col][j];
 			top_increment++;
 		}
+		if (matrix[col][j] == 0)
+		{
+			contains_null = 1;
+		}
 		j++;
 	}
 	j--;
@@ -75,19 +84,41 @@ int	ft_verify_column(int col, int *input, int **matrix)
 		}
 		j--;
 	}
-	return (top_increment == top) && (bottom_increment == bottom);
+	return ((top_increment == top) && (bottom_increment == bottom)
+		&& !contains_null);
+}
+
+int	ft_is_board_filled(int **matrix)
+{
+	int	j;
+	int	i;
+
+	j = 0;
+	i = 0;
+	while (i < 4)
+	{
+		while (j < 4)
+		{
+			if (matrix[i][j] == 0)
+				return (FALSE);
+			j++;
+		}
+		i++;
+	}
+	return (TRUE);
 }
 
 int	ft_is_valid_board(int *input, int **matrix)
 {
 	int	i;
+	int	j;
 
 	i = 0;
 	while (i < 4)
 	{
 		if (!ft_verify_column(i, input, matrix))
 		{
-			return (0);
+			return (FALSE);
 		}
 		i++;
 	}
@@ -95,130 +126,96 @@ int	ft_is_valid_board(int *input, int **matrix)
 	while (i < 4)
 	{
 		if (!ft_verify_row(i, input, matrix))
-		{
-			return (0);
-		}
+			return (FALSE);
 		i++;
 	}
-	return (1);
+	return (TRUE);
 }
 
-int	ft_is_int_in_col(int col, int **matrix)
+int	ft_is_num_in_row(int y, int val, int **matrix)
 {
 	int	i;
 
 	i = 0;
+	while (i < 4)
+	{
+		// printf("WEE WOO %d %d\n", y, val);
+		if (matrix[y][i] == val)
+			return (TRUE);
+		i++;
+	}
+	return (FALSE);
 }
 
-int	pose(int **matrix)
+int	ft_is_num_in_col(int x, int val, int **matrix)
+{
+	int	i;
+
+	i = 0;
+	while (i < 4)
+	{
+		if (matrix[i][x] == val)
+			return (TRUE);
+		i++;
+	}
+	return (FALSE);
+}
+
+void	ft_find_empty_square(int *x, int *y, int **matrix)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	j = 0;
 	while (i < 4)
 	{
+		j = 0;
 		while (j < 4)
 		{
+			if (matrix[i][j] == 0)
+			{
+				*x = j;
+				*y = i;
+				return ;
+			}
+			j++;
 		}
-	}
-}
-
-int	contains_x(int x, int num, int **matrix)
-{
-	int	i;
-
-	i = 0;
-	while (i < 4)
-	{
-		if (num == matrix[i][x])
-			return (1);
 		i++;
 	}
-	return (0);
+	return ;
 }
 
-int	contains_y(int y, int num, int **matrix)
+int	ft_is_valid_move(int x, int y, int val, int **matrix, int *input)
+{
+	if (ft_is_num_in_col(x, val, matrix) || ft_is_num_in_row(y, val, matrix))
+	{
+		return (FALSE);
+	}
+	return (TRUE);
+}
+
+int	solve(int *input, int **matrix)
 {
 	int	i;
+	int	j;
+	int	x;
+	int	y;
 
-	i = 0;
-	while (i < 4)
+	if (ft_is_valid_board(input, matrix))
+		return (TRUE);
+	ft_find_empty_square(&x, &y, matrix);
+	i = 1;
+	while (i <= 4)
 	{
-		if (num == matrix[y][i])
-			return (1);
+		// printf("is valid move %d %d %d\n", x, y, i);
+		if (ft_is_valid_move(x, y, i, matrix, input))
+		{
+			matrix[y][x] = i;
+			if (solve(input, matrix))
+				return (TRUE);
+			matrix[y][x] = 0;
+		}
 		i++;
 	}
-	return (0);
-}
-
-int	count_digits(int n)
-{
-	if (n / 10 == 0)
-		return (1);
-	return (1 + count_digits(n / 10));
-}
-
-// int	ft_find_next(int num)
-// {
-// 	int	i;
-// 	int	digits_count;
-// 	int	j;
-// 	int	actual_num;
-// 	int	i_num;
-
-// 	digits_count = count_digits(num);
-// 	i = 0;
-// 	while (i < 4321)
-// 	{
-// 		i_num = num % 10;
-// 		j = 0;
-// 		while (j < 4321)
-// 		{
-// 			int j_num == num;
-// 			if (j != i && i_num !=)
-// 				num /= 10;
-// 		}
-// 	}
-// }
-//
-int	solve(int *input, int **matrix, int x, int y)
-{
-	if (ft_verify_row(x, input, matrix))
-		return (1);
-	if (y >= 4)
-		return (0);
-	if (x == 1 && y == 1)
-		printf("%d\n", contains_y(y, matrix[y][x] + 1, matrix));
-	if (!contains_x(x, matrix[y][x] + 1, matrix) && !contains_y(y, matrix[y][x]
-			+ 1, matrix) && !ft_verify_row(x, input, matrix))
-	{
-		if (matrix[y][x] < 4)
-			(matrix[y][x])++;
-		else
-			(matrix[y][x]) = 1;
-	}
-	if (x >= 4)
-	{
-		x = 1;
-		y++;
-	}
-	if (x >= 4 && y >= 4)
-	{
-		return (0);
-	}
-	return (solve(input, matrix, x + 1, y));
-	// i = 0;
-	// digits_num = count_digits(num);
-	// while (i < digits_num)
-	// {
-	// 	matrix[x][i] = num % 10;
-	// 	num /= 10;
-	// 	i++;
-	// }
-	// return (solve());
-	// if (ft_is_valid_board(input, matrix))
-	// 	return (1);
-	// return (solve(input, matrix, correct));
+	return (FALSE);
 }

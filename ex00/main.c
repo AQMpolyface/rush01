@@ -21,27 +21,27 @@ int	main(int argc, char **argv)
 	if (!matrix)
 		return (1);
 */
-	int *input = ft_parse_input("3 1 2 2 2 3 2 1 2 2 1 4 2 2 4 1");
-	// int *input = ft_parse_input("4 3 2 1 1 2 2 2 4 3 2 1 1 2 2 2");
+	// int *input = ft_parse_input("3 1 2 2 2 3 2 1 2 2 1 4 2 2 4 1");
+	int *input = ft_parse_input("4 3 2 1 1 2 2 2 4 3 2 1 1 2 2 2");
 	int **matrix = ft_alloc_matrix();
 
-	/*	int matrix_cpy[4][4] = {
-			{1, 2, 3, 4},
-			{2, 3, 4, 1},
-			{3, 4, 1, 2},
-			{4, 1, 2, 3},
-		};
+	// int matrix_cpy[4][4] = {
+	// 	{1, 2, 3, 4},
+	// 	{2, 3, 4, 1},
+	// 	{3, 4, 1, 2},
+	// 	{4, 1, 0, 0},
+	// };
 
-		for (int i = 0; i < 4; i++)
-			for (int j = 0; j < 4; j++)
-				matrix[i][j] = matrix_cpy[i][j];*/
+	// for (int i = 0; i < 4; i++)
+	// 	for (int j = 0; j < 4; j++)
+	// 		matrix[i][j] = matrix_cpy[i][j];
 	// ft_print_matrix(matrix);
-	// printf("%d\n", ft_is_valid_board(input, matrix));
-	printf("%d\n", solve(input, matrix, 0, 0));
-	ft_put_y_right(input, matrix);
-	ft_put_y_left(input, matrix);
-	ft_put_x_bottom(input, matrix);
-	ft_put_x_top(input, matrix);
+	printf("%d\n", ft_is_valid_board(input, matrix));
+	printf("%d\n", solve(input, matrix));
+	// ft_put_y_right(input, matrix);
+	// ft_put_y_left(input, matrix);
+	// ft_put_x_bottom(input, matrix);
+	// ft_put_x_top(input, matrix);
 	ft_print_matrix(matrix);
 	ft_putchar('\n');
 	/*
