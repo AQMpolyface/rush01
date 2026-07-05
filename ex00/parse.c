@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "math.h"
 #include "utils.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -41,7 +40,7 @@ int	*ft_parse_input(char *str)
 		else
 			return (ft_ret("invalid char in input detected\n"));
 	}
-	if (!ft_sqrt(matrix_i + 1))
-		return (ft_ret("number of params must be a square\n"));
+	if (matrix_i != 15)
+		return (ft_ret("number of params must be 15\n"));
 	return (matrix);
 }
