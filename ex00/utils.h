@@ -10,6 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#define TRUE 1
+#define FALSE 0
+
 void	ft_putchar(char c);
 
 void	ft_putstr(char *str);
@@ -18,4 +21,4 @@ void	ft_print_matrix(int **matrix);
 
 int		ft_is_whitespace(char c);
 
-int		**ft_alloc_matrix();
+int		**ft_alloc_matrix(void);
