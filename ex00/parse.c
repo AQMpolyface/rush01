@@ -10,9 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "math.h"
 #include "utils.h"
 #include <stdio.h>
 #include <stdlib.h>
+
+void	*ft_ret(char *str)
+{
+	ft_putstr(str);
+	return (NULL);
+}
 
 int	*ft_parse_input(char *str)
 {
@@ -22,10 +29,7 @@ int	*ft_parse_input(char *str)
 
 	matrix = malloc(sizeof(int) * 16);
 	if (!matrix)
-	{
-		ft_putstr("allocation of matrix failed\n");
-		return (NULL);
-	}
+		return (ft_ret("allocation of matrix failed\n"));
 	i = -1;
 	matrix_i = -1;
 	while (str[++i])
@@ -35,10 +39,9 @@ int	*ft_parse_input(char *str)
 		else if (str[i] >= '0' && str[i] <= '9')
 			matrix[++matrix_i] = str[i] - '0';
 		else
-		{
-			ft_putstr("invalid char in input detected\n");
-			return (NULL);
-		}
+			return (ft_ret("invalid char in input detected\n"));
 	}
+	if (!ft_sqrt(matrix_i + 1))
+		return (ft_ret("number of params must be a square\n"));
 	return (matrix);
 }
